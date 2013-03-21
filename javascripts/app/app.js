@@ -13,8 +13,9 @@ var main = function () {
     };
 	
 	var loadJSON = function() {
-		$getJSON("all.json", function (myTodos) {
-			myTodos.forEach(console.log("hi"));
+		$.getJSON("all.json", function (myTodos) {
+			myTodos.forEach(function (myTodo) {
+				myTodo.categories.forEach(console.log(category));
 		}); 
 	}; 
 
