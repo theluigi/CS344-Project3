@@ -11,8 +11,21 @@ var main = function () {
             return false;
         });
     };
+	
+	var loadJSON = function() {
+		$getJSON("all.json", function (myTodos) {
+			myTodos.forEach(console.log("hi"));
+		}); 
+	}; 
 
+	var initialise = function () {
+	
+	loadJSON(); 
     setUpClickHandler($(".tabs .tab"));
+
+	};
+	
+	initialise(); 
 };
 
 $(document).ready(main);
