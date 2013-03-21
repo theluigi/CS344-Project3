@@ -22,7 +22,7 @@ var main = function () {
 					categoriesList = categoriesList + category; //add categories from all.json
 				});
 				var desc = myTodo.description;
-				addTodoData(desc, categoriesList); 
+				addTodoData(desc, categoriesList); //runs function to add data from task
 			}); 
 		});
 	
@@ -30,10 +30,15 @@ var main = function () {
 
 	//todo function
 	var addTodoData = function(text, cats) {
-		taskCounter++; 
-		  $("#All").append("<div id = task" + taskCounter + ">");
-		  $("#task" + taskCounter).html("<p>" + text + " /// " + cats + "</p>");
-		
+		taskCounter++; //counts number of tasks 
+		  $("#All").append("<div id = task" + taskCounter + ">"); //assigns each task its own div
+		  $("#task" + taskCounter).html("<div class = 'text'>" + text + "</div>" + //puts info from task in divs 
+		  "<div class = 'cats'>" + cats + "</div>" +
+		  "<button type='button' class='delete' id='" + taskCounter + "'>Delete</button>" ); //remove button
+		  $(".delete").click(function () { //remove function
+            var thisTodo = $(this).attr("id");
+            $("#task" + thisTodo).remove();			
+		  });
 	}; 
 	
 	
