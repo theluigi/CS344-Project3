@@ -41,7 +41,13 @@ var main = function () {
 		  });
 	}; 
 	
-	
+	var addNewTodo = function() {
+		$("#submit").click(function() {
+			var text = $("#newText").val();
+			var cats = $("#newCats").val();
+			addTodoData(text, cats);
+		});
+	};
 	
 	
 
@@ -49,6 +55,7 @@ var main = function () {
 	
 	loadJSON(); 
     setUpClickHandler($(".tabs .tab"));
+	addNewTodo();
 
 	};
 	
