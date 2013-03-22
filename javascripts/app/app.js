@@ -36,13 +36,17 @@ var main = function () {
 	//todo function
 	var addTodoData = function(text, cats) {
 		taskCounter++; //counts number of tasks 
-		  $("#All").append("<div id = task" + taskCounter + ">"); //assigns each task its own div
+		  $("#All").append("<div id = aTask>" + "<div id = task" + taskCounter + ">" + "</div>" + "</div>" + "</br>"); //assigns each task its own div
 		  $("#task" + taskCounter).html("<div class = 'text'>" + text + "</div>" + //puts info from task in divs 
 		  "<div class = 'cats'>" + cats + "</div>" +
 		  "<button type='button' class='delete' id='" + taskCounter + "'>Delete</button>" ); //remove button
 		  $(".delete").click(function () { //remove function
             var thisTodo = $(this).attr("id");
-            $("#task" + thisTodo).remove();	
+			$("#task" + thisTodo).fadeOut('slow', function() {
+				$("#task" + thisTodo).remove();
+				$("#task" + thisTodo).parent('div').remove();
+							
+			});
 			taskCounter--;	
 		  });
 	}; 
