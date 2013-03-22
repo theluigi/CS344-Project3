@@ -1,6 +1,6 @@
 var main = function () {
 
-	var categoriesList = "" , taskCounter = 0; 
+	var totalCategories = " ", taskCounter = 0; 
 	
     var setUpClickHandler = function (anchor) {
         anchor.click(function () {
@@ -9,6 +9,9 @@ var main = function () {
             $(".active").removeClass("active");
             $(this).addClass("active");
             $("#" + target).addClass("active");
+			 if (target === "Categorized") {
+                categorizedTab();
+            }
 
             return false;
         });
@@ -17,9 +20,11 @@ var main = function () {
 	var loadJSON = function() {
 		$.getJSON("all.json", function (myTodos) {
 			myTodos.forEach(function (myTodo) {
+				var categoriesList = "";
 				myTodo.categories.forEach(function(category) {
-					category = " " + category;
-					categoriesList = categoriesList + category; //add categories from all.json
+					category = category + " ";
+					categoriesList = categoriesList + category;
+					totalCategories = totalCategories + category; //add categories from all.json
 				});
 				var desc = myTodo.description;
 				addTodoData(desc, categoriesList); //runs function to add data from task
@@ -37,19 +42,51 @@ var main = function () {
 		  "<button type='button' class='delete' id='" + taskCounter + "'>Delete</button>" ); //remove button
 		  $(".delete").click(function () { //remove function
             var thisTodo = $(this).attr("id");
-            $("#task" + thisTodo).remove();			
+            $("#task" + thisTodo).remove();	
+			taskCounter--;	
 		  });
 	}; 
 	
 	var addNewTodo = function() {
-		$("#submit").click(function() {
-			var text = $("#newText").val();
+		$("#submit").click(function() { //when submit button is clicked...
+			var text = $("#newText").val(); //get vals and...
 			var cats = $("#newCats").val();
-			addTodoData(text, cats);
+			totalCategories = totalCategories + " " + cats;
+			addTodoData(text, cats); //add new todo
+					
 		});
 	};
 	
+	var categorizedTab = function () {
+		$("#Categorized").children().remove(); //delete old data when clicked, per project instructions
+		var categories = totalCategories.split(" ");  
+		var uniqueCategories = [];
+		$.each(categories, function(i, el){
+		if($.inArray(el, uniqueCategories) === -1) uniqueCategories.push(el);
+		});
+		
+		var x; 
+		for (x=0; x<uniqueCategories.length; x++) {
+			$("#Categorized").append("<div class='cat" + x + "'" + ">" + "<h2>" + uniqueCategories[x] + "</h2>" + "</div>" + "</br>");
+		};
+		
+		var y; 
+		for (y=0; y<taskCounter; y++) {
+			var taskText = $("#task" + taskCounter + " .text").html();
+			var taskCats = $("#task" + taskCounter + " .cats").html();
+			var splitCats = taskCats.split(" ");
+			var z;
+			for (z=0; z<splitCats.length; z++) {
+				
+			};
+			
+			
+		};	
+			
+		
 	
+	};	
+    
 
 	var initialise = function () {
 	

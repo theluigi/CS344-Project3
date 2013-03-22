@@ -1,16 +1,23 @@
 html {
   background: #977AD4;
   color: #ffffff;
-  text-align: center; 
   margin: auto;
 
 }
+
 
 h1 {
   font-size: 2.5em;
   margin: auto;
+  text-align: center;
 
 }
+
+h2 {
+  font-size: 1.8em;
+  
+}
+
 .tabs {
   margin-top: 50px;
   margin-bottom:20px;
@@ -28,7 +35,8 @@ h1 {
 }
 
 .content .tab {
-  display: none; 
+  display: none;
+  padding: 20px;
 }
 
 .content .active {
