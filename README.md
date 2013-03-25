@@ -34,3 +34,8 @@ Your project should bootstrap itself by pulling a list of existing ToDos from a 
 You will be graded on (1) following the spec, (2) getting everything to work, (3) interface style, (4) user experience style, (5) code style -- don't forget to lint your html and javascript, (6) consistency in code, (7) consistency in github commits, (8) intangible creative aspects.
 
 Post a link to your github repo.
+
+
+--
+
+This project gave me a lot of trouble. I spent a lot of time on it, but couldn't figure it out. I gave it my best shot...
